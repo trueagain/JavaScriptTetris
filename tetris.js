@@ -208,13 +208,13 @@ function tetrisMainFunction(){
 	tetrisView.CELL_SIZE = 20;
 	tetrisView.context = document.getElementById("drawingCanvas").getContext("2d");
 	tetrisView.draw = function(){
-    	this.context.fillStyle = "grey";
+    	this.context.fillStyle = "rgb(200, 210, 210)";
     	this.context.fillRect(0, 0, tetrisModel.WIDTH * this.CELL_SIZE, tetrisModel.HEIGHT * this.CELL_SIZE);
         var i, j;
         for(i = 0; i < tetrisModel.HEIGHT; i++){
             for(j = 0; j < tetrisModel.WIDTH; j++){
                 if(tetrisModel.staticCellsAndMovingPiece[i][j] != 0){
-                    this.context.fillStyle = "black";
+                    this.context.fillStyle = "rgb(40, 40, 60)";
                     this.context.fillRect(j * this.CELL_SIZE, i * this.CELL_SIZE, this.CELL_SIZE, this.CELL_SIZE);
                 }
             }
