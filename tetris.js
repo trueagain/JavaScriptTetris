@@ -4,6 +4,7 @@ function tetrisMainFunction(){
     var tetrisModel = new Object();
     tetrisModel.WIDTH = 10;
     tetrisModel.HEIGHT = 20;
+    tetrisModel.score = 0;
     tetrisModel.staticCells = createEmptyTwoDimArray(tetrisModel.HEIGHT, tetrisModel.WIDTH);
 	tetrisModel.staticCellsAndMovingPiece = cloneTwoDimArray(tetrisModel.staticCells);
 	tetrisModel.createPieces = function(){
@@ -145,6 +146,7 @@ function tetrisMainFunction(){
             	for(j = 0; j < this.WIDTH; j++){
             		this.staticCells[0][j] = 0;
             	}
+            	this.score++;
             }
         }
     }
@@ -194,6 +196,7 @@ function tetrisMainFunction(){
                 }
             }
         }
+        document.getElementById("score").innerHTML = tetrisModel.score;
     }
     
     function moveWaitAndCallNext(){
@@ -242,6 +245,8 @@ function tetrisMainFunction(){
     	document.addEventListener('keydown', onKeydown);
     }
     addKeyListener();
+    
+    tetrisView.draw();
 }
 
 function createEmptyTwoDimArray(n, m){
