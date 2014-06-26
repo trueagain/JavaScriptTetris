@@ -92,7 +92,6 @@ function tetrisMainFunction(){
 	}
 	tetrisModel.reset = function(){
 		this.score = 0;
-	    this.active = 0;
 	    this.staticCells = createEmptyTwoDimArray(tetrisModel.HEIGHT, tetrisModel.WIDTH);
 		this.staticCellsAndMovingPiece = cloneTwoDimArray(tetrisModel.staticCells);
 	}
@@ -117,12 +116,10 @@ function tetrisMainFunction(){
 		return result;
 	}
 	tetrisModel.moveActivePieceIfPossible = function(x, y){
-		console.log("this.activePiece.position: " + this.activePiece.position[0] + "-" + this.activePiece.position[1]);
     	var newStaticCellsAndMovingPiece = cloneTwoDimArray(this.staticCells);
     	var newPiecePosition = new Array();
     	newPiecePosition[0] = this.activePiece.position[0] + x;
     	newPiecePosition[1] = this.activePiece.position[1] + y;
-    	console.log("newPiecePosition: " + newPiecePosition[0] + "-" + newPiecePosition[1]);
     	var positions = this.calcPiecePartsAbsolutePositions(newPiecePosition, this.activePiece.partsPosition);
     	for(i = 0; i < 4; i++){
 	    	if((positions[i][1]) >= 0 && (positions[i][0] < tetrisModel.HEIGHT) && (positions[i][1] < tetrisModel.WIDTH)){
@@ -194,6 +191,9 @@ function tetrisMainFunction(){
     tetrisModel.addCurrentPieceToCells = function(){
     	var positions = this.calcPiecePartsAbsolutePositions(this.activePiece.position, this.activePiece.partsPosition);
     	for(i = 0; i < 4; i++){
+    		if(positions[i][0] < 0){
+    			this.active = 0;
+    		}
 	    	if((positions[i][0] >= 0) && (positions[i][1]) >= 0 
 	    		&& (positions[i][0] < tetrisModel.HEIGHT) && (positions[i][1] < tetrisModel.WIDTH)
 	    		&& (tetrisModel.staticCells[positions[i][0]][positions[i][1]] == 0)){
@@ -270,6 +270,7 @@ function tetrisMainFunction(){
 	    			tetrisModel.reset();
 	    		} else {
 	    			tetrisModel.active = 1;
+	    			tetrisModel.reset();
 	    			tetrisModel.setNewActivePiece();
 	    		}
 	    		tetrisView.draw();
