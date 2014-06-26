@@ -5,6 +5,7 @@ function tetrisMainFunction(){
     tetrisModel.WIDTH = 10;
     tetrisModel.HEIGHT = 20;
     tetrisModel.score = 0;
+    tetrisModel.active = 0;
     tetrisModel.staticCells = createEmptyTwoDimArray(tetrisModel.HEIGHT, tetrisModel.WIDTH);
 	tetrisModel.staticCellsAndMovingPiece = cloneTwoDimArray(tetrisModel.staticCells);
 	tetrisModel.createPieces = function(){
@@ -88,6 +89,12 @@ function tetrisMainFunction(){
 	tetrisModel.activePiece = tetrisModel.chooseNewActivePiece();
 	tetrisModel.setNewActivePiece = function(){
 		this.activePiece = this.chooseNewActivePiece();
+	}
+	tetrisModel.reset = function(){
+		this.score = 0;
+	    this.active = 0;
+	    this.staticCells = createEmptyTwoDimArray(tetrisModel.HEIGHT, tetrisModel.WIDTH);
+		this.staticCellsAndMovingPiece = cloneTwoDimArray(tetrisModel.staticCells);
 	}
 	tetrisModel.calcPiecePartsAbsolutePositions = function(position, parts){
 		var result = new Array();
@@ -200,15 +207,19 @@ function tetrisMainFunction(){
     }
     
     function moveWaitAndCallNext(){
-        if(tetrisModel.moveActivePieceIfPossible(1, 0)){
-        	tetrisView.draw();
-        } else {
-        	tetrisModel.addCurrentPieceToCells();
-        	tetrisModel.setNewActivePiece();
-        	tetrisView.draw();
-        }
+    	if(tetrisModel.active == 1){
+    		if(tetrisModel.moveActivePieceIfPossible(1, 0)){
+	        	tetrisView.draw();
+	        } else {
+	        	tetrisModel.addCurrentPieceToCells();
+	        	tetrisModel.setNewActivePiece();
+	        	tetrisView.draw();
+	        }
+    	}
         setTimeout(moveWaitAndCallNext, 500);
 	}
+	
+	moveWaitAndCallNext();
 
 	function addKeyListener(){
 	    var LEFT_ARROW_KEY = 37;
@@ -238,7 +249,14 @@ function tetrisMainFunction(){
 	    			tetrisView.draw();
 	    		}
 	    	} else if(e.keyCode == SPACE_KEY){
-	    		moveWaitAndCallNext();
+	    		if(tetrisModel.active == 1){
+	    			tetrisModel.active = 0;
+	    			tetrisModel.reset();
+	    		} else {
+	    			tetrisModel.active = 1;
+	    			tetrisModel.setNewActivePiece();
+	    		}
+	    		tetrisView.draw();
 	    	}
 	    }
 
