@@ -142,6 +142,7 @@ function tetrisMainFunction(){
 	    return true;
     }
     tetrisModel.removeFilledRows = function(){
+    	var numberOfRows = 0;
     	for(i = 0; i < this.HEIGHT; i++){
     		var filled = true;
             for(j = 0; j < this.WIDTH; j++){
@@ -159,9 +160,18 @@ function tetrisMainFunction(){
             	for(j = 0; j < this.WIDTH; j++){
             		this.staticCells[0][j] = 0;
             	}
-            	this.score++;
+            	numberOfRows++;
             }
         }
+        if(numberOfRows == 1){
+        	this.score += 100;
+        } else if(numberOfRows == 2){
+        	this.score += 300;
+        }  else if(numberOfRows == 3){
+        	this.score += 600;
+        }  else if(numberOfRows == 4){
+        	this.score += 1200;
+        }  
     }
     tetrisModel.changeActivePiecePartsPositionIfPossible = function(newPartsPosition){
     	var oldPartsPosition = this.activePiece.partsPosition;
