@@ -11,46 +11,46 @@ function tetrisMainFunction(){
 	tetrisModel.createPieces = function(){
 		var result = new Object;
 		result.I = new Object;
-		result.I.PARTS_POSITION_1 = [[1, 0], [1, 1], [1, 2], [1, 3]];
-	    result.I.PARTS_POSITION_2 = [[0, 1], [1, 1], [2, 1], [3, 1]];
-		result.I.PARTS_POSITION_3 = [[1, 0], [1, 1], [1, 2], [1, 3]];
-	    result.I.PARTS_POSITION_4 = [[0, 1], [1, 1], [2, 1], [3, 1]];
+		result.I.PARTS_POSITION_1 = [[1, 0], [1, 1], [1, 2], [1, 3], 1];
+	    result.I.PARTS_POSITION_2 = [[0, 1], [1, 1], [2, 1], [3, 1], 3];
+		result.I.PARTS_POSITION_3 = [[1, 0], [1, 1], [1, 2], [1, 3], 1];
+	    result.I.PARTS_POSITION_4 = [[0, 1], [1, 1], [2, 1], [3, 1], 3];
 	    result.I.partsPosition = result.I.PARTS_POSITION_1;
 	    result.J = new Object;
-	    result.J.PARTS_POSITION_1 = [[0, 0], [1, 0], [1, 1], [1, 2]];
-	    result.J.PARTS_POSITION_2 = [[0, 1], [0, 2], [1, 1], [2, 1]];
-		result.J.PARTS_POSITION_3 = [[1, 0], [1, 1], [1, 2], [2, 2]];
-	    result.J.PARTS_POSITION_4 = [[0, 1], [1, 1], [2, 0], [2, 1]];
+	    result.J.PARTS_POSITION_1 = [[0, 0], [1, 0], [1, 1], [1, 2], 1];
+	    result.J.PARTS_POSITION_2 = [[0, 1], [0, 2], [1, 1], [2, 1], 2];
+		result.J.PARTS_POSITION_3 = [[1, 0], [1, 1], [1, 2], [2, 2], 2];
+	    result.J.PARTS_POSITION_4 = [[0, 1], [1, 1], [2, 0], [2, 1], 2];
 	    result.J.partsPosition = result.J.PARTS_POSITION_1;
 	    result.L = new Object;
-	    result.L.PARTS_POSITION_1 = [[0, 2], [1, 0], [1, 1], [1, 2]];
-	    result.L.PARTS_POSITION_2 = [[0, 1], [1, 1], [2, 1], [2, 2]];
-		result.L.PARTS_POSITION_3 = [[1, 0], [1, 1], [1, 2], [2, 0]];
-	    result.L.PARTS_POSITION_4 = [[0, 0], [0, 1], [1, 1], [2, 1]];
+	    result.L.PARTS_POSITION_1 = [[0, 2], [1, 0], [1, 1], [1, 2], 1];
+	    result.L.PARTS_POSITION_2 = [[0, 1], [1, 1], [2, 1], [2, 2], 2];
+		result.L.PARTS_POSITION_3 = [[1, 0], [1, 1], [1, 2], [2, 0], 2];
+	    result.L.PARTS_POSITION_4 = [[0, 0], [0, 1], [1, 1], [2, 1], 2];
 	    result.L.partsPosition = result.L.PARTS_POSITION_1;
 	    result.O = new Object;
-	    result.O.PARTS_POSITION_1 = [[0, 0], [0, 1], [1, 0], [1, 1]];
-	    result.O.PARTS_POSITION_2 = [[0, 0], [0, 1], [1, 0], [1, 1]];
-		result.O.PARTS_POSITION_3 = [[0, 0], [0, 1], [1, 0], [1, 1]];
-	    result.O.PARTS_POSITION_4 = [[0, 0], [0, 1], [1, 0], [1, 1]];
+	    result.O.PARTS_POSITION_1 = [[0, 0], [0, 1], [1, 0], [1, 1], 1];
+	    result.O.PARTS_POSITION_2 = [[0, 0], [0, 1], [1, 0], [1, 1], 1];
+		result.O.PARTS_POSITION_3 = [[0, 0], [0, 1], [1, 0], [1, 1], 1];
+	    result.O.PARTS_POSITION_4 = [[0, 0], [0, 1], [1, 0], [1, 1], 1];
 	    result.O.partsPosition = result.O.PARTS_POSITION_1;
 	    result.S = new Object;
-	    result.S.PARTS_POSITION_1 = [[1, 1], [1, 2], [2, 0], [2, 1]];
-	    result.S.PARTS_POSITION_2 = [[0, 1], [1, 1], [1, 2], [2, 2]];
-		result.S.PARTS_POSITION_3 = [[1, 1], [1, 2], [2, 0], [2, 1]];
-	    result.S.PARTS_POSITION_4 = [[0, 1], [1, 1], [1, 2], [2, 2]];
+	    result.S.PARTS_POSITION_1 = [[1, 1], [1, 2], [2, 0], [2, 1], 2];
+	    result.S.PARTS_POSITION_2 = [[0, 1], [1, 1], [1, 2], [2, 2], 2];
+		result.S.PARTS_POSITION_3 = [[1, 1], [1, 2], [2, 0], [2, 1], 2];
+	    result.S.PARTS_POSITION_4 = [[0, 1], [1, 1], [1, 2], [2, 2], 2];
 	    result.S.partsPosition = result.S.PARTS_POSITION_1;
 	    result.T = new Object;
-	    result.T.PARTS_POSITION_1 = [[0, 1], [1, 0], [1, 1], [1, 2]];
-	    result.T.PARTS_POSITION_2 = [[0, 1], [1, 1], [1, 2], [2, 1]];
-		result.T.PARTS_POSITION_3 = [[1, 0], [1, 1], [1, 2], [2, 1]];
-	    result.T.PARTS_POSITION_4 = [[0, 1], [1, 0], [1, 1], [2, 1]];
+	    result.T.PARTS_POSITION_1 = [[0, 1], [1, 0], [1, 1], [1, 2], 1];
+	    result.T.PARTS_POSITION_2 = [[0, 1], [1, 1], [1, 2], [2, 1], 2];
+		result.T.PARTS_POSITION_3 = [[1, 0], [1, 1], [1, 2], [2, 1], 2];
+	    result.T.PARTS_POSITION_4 = [[0, 1], [1, 0], [1, 1], [2, 1], 2];
 	    result.T.partsPosition = result.T.PARTS_POSITION_1;
 	    result.Z = new Object;
-	    result.Z.PARTS_POSITION_1 = [[1, 0], [1, 1], [2, 1], [2, 2]];
-	    result.Z.PARTS_POSITION_2 = [[0, 1], [1, 0], [1, 1], [2, 0]];
-		result.Z.PARTS_POSITION_3 = [[1, 0], [1, 1], [2, 1], [2, 2]];
-	    result.Z.PARTS_POSITION_4 = [[0, 1], [1, 0], [1, 1], [2, 0]];
+	    result.Z.PARTS_POSITION_1 = [[1, 0], [1, 1], [2, 1], [2, 2], 2];
+	    result.Z.PARTS_POSITION_2 = [[0, 1], [1, 0], [1, 1], [2, 0], 2];
+		result.Z.PARTS_POSITION_3 = [[1, 0], [1, 1], [2, 1], [2, 2], 2];
+	    result.Z.PARTS_POSITION_4 = [[0, 1], [1, 0], [1, 1], [2, 0], 2];
 	    result.Z.partsPosition = result.Z.PARTS_POSITION_1;
 	    return result;
 	}
@@ -83,7 +83,7 @@ function tetrisMainFunction(){
 		} else{
 			randPiece.partsPosition = randPiece.PARTS_POSITION_4;
 		}
-		randPiece.position = [-1, 5];
+		randPiece.position = [-1 + (-1 * randPiece.partsPosition[4]), 5];
 		return randPiece;
 	}
 	tetrisModel.activePiece = tetrisModel.chooseNewActivePiece();
@@ -117,16 +117,22 @@ function tetrisMainFunction(){
 		return result;
 	}
 	tetrisModel.moveActivePieceIfPossible = function(x, y){
+		console.log("this.activePiece.position: " + this.activePiece.position[0] + "-" + this.activePiece.position[1]);
     	var newStaticCellsAndMovingPiece = cloneTwoDimArray(this.staticCells);
     	var newPiecePosition = new Array();
     	newPiecePosition[0] = this.activePiece.position[0] + x;
     	newPiecePosition[1] = this.activePiece.position[1] + y;
+    	console.log("newPiecePosition: " + newPiecePosition[0] + "-" + newPiecePosition[1]);
     	var positions = this.calcPiecePartsAbsolutePositions(newPiecePosition, this.activePiece.partsPosition);
     	for(i = 0; i < 4; i++){
-	    	if((positions[i][0] >= 0) && (positions[i][1]) >= 0 
-	    		&& (positions[i][0] < tetrisModel.HEIGHT) && (positions[i][1] < tetrisModel.WIDTH)
-	    		&& (this.staticCells[positions[i][0]][positions[i][1]] == 0)){
-	    		newStaticCellsAndMovingPiece[positions[i][0]][positions[i][1]] = 1;
+	    	if((positions[i][1]) >= 0 && (positions[i][0] < tetrisModel.HEIGHT) && (positions[i][1] < tetrisModel.WIDTH)){
+	    			if(positions[i][0] >= 0){
+	    				if(this.staticCells[positions[i][0]][positions[i][1]] == 0){
+	    					newStaticCellsAndMovingPiece[positions[i][0]][positions[i][1]] = 1;
+	    				} else {
+	    					return false;
+	    				}
+	    			}
 	    	} else {
 	    		return false;
 	    	}
