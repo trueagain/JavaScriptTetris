@@ -222,7 +222,7 @@ function tetrisMainFunction(){
         document.getElementById("score").innerHTML = tetrisModel.score;
     }
     
-    function moveWaitAndCallNext(){
+    function turn(){
     	if(tetrisModel.active == 1){
     		if(tetrisModel.moveActivePieceIfPossible(1, 0)){
 	        	tetrisView.draw();
@@ -232,11 +232,10 @@ function tetrisMainFunction(){
 	        	tetrisView.draw();
 	        }
     	}
-        setTimeout(moveWaitAndCallNext, 500);
 	}
 	
-	moveWaitAndCallNext();
-
+	window.setInterval(turn, 500);
+	
 	function addKeyListener(){
 	    var LEFT_ARROW_KEY = 37;
 	    var UP_ARROW_KEY = 38;
